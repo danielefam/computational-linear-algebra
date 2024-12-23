@@ -1,6 +1,6 @@
 % Load the matrix X
 close all;
-load("homework2/Circle.mat");
+load("datasets/Circle.mat");
 
 % Compute the Laplacian matrix
 sigma = 1;
