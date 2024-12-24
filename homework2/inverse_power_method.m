@@ -1,6 +1,6 @@
 function [mu, v] = inverse_power_method(A, maxIter, relTol)
     if nargin < 2
-        maxIter = 200;
+        maxIter = 500;
     end
     if nargin < 3
         relTol = 1e-8;
@@ -8,11 +8,9 @@ function [mu, v] = inverse_power_method(A, maxIter, relTol)
 
     % Normalizzazione iniziale del vettore
     [n,~] = size(A);
-    v_k = sprand(n,1,0.2);
-    while v_k(1) < 1e-10
-        v_k = sprand(n,1,0.2);
-    end
-    v_k = v_k / norm(v_k);
+    v_in = sprand(n,1,0.2);
+
+    v_k = v_in / norm(v_in);
     mu_k = 10; % Valore iniziale per mu_k
     % A = full(A);
 
