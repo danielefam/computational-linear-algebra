@@ -1,6 +1,11 @@
 % Load the matrix X
 close all;
-load("datasets/Circle.mat");
+
+% load("datasets/Circle.mat");
+
+load("datasets/Spiral.mat");
+X = X(:, 1:2);
+%utilizzando spiral viene un solo connected component
 
 % Compute the Laplacian matrix
 sigma = 1;
