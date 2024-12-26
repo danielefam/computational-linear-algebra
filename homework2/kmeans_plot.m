@@ -6,9 +6,9 @@ function [] = kmeans_plot(X, L, M)
     figure(4);
     for i = 1:M
         if size(X, 2) == 3
-            scatter3(X(idx==i,1),X(idx==i,2),X(idx==i,3),5,colors(i,:))
+            scatter3(X(idx==i,1),X(idx==i,2),X(idx==i,3),5,colors(i,:), Marker='x')
         else
-            scatter(X(idx==i,1),X(idx==i,2),5,colors(i,:))
+            scatter(X(idx==i,1),X(idx==i,2),5,colors(i,:), Marker='x')
         end
         legendInfo{i} = ['Cluster ' num2str(i)];
         hold on
