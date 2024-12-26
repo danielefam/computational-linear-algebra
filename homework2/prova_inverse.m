@@ -1,27 +1,18 @@
 close all; clc;
 
-rng("default")
-Adiag = diag([9, 8, 4, 2, 20, 7]);
-Adiag(2,3) = 3;
-Adiag(3,2) = 3;
-Adiag(4,5) = 3;
-Adiag(5,4) = 3;
-A = diag([4,2,3,1]);
+load("datasets/Circle.mat");
+% X = synthetic_dataset(42);
+% load("datasets/Spiral.mat");
+% X = X(:, 1:2);
 
-% [eigval, eigvec] = inverse_power_method(L);
+% Compute the Laplacian matrix
+sigma = 1;
+k = 10;
+[L, D, W, L_sym] = compute_laplacian(X, sigma, k);
 
-% [eigval1, eigvec1] = inverse_power_method(A);
-% 
-% B1 = deflation(A, eigval1, eigvec1,1);
-% A1 = B1(2:end, 2:end);
-% [eigval2, eigvec2] = inverse_power_method(A1);
-% B2 = deflation(A1, eigval2, eigvec2,1);
+rng("default");
 
-M = 20
-
-% exact = eigs(Adiag,M, 'smallestabs')
-% res = deflation_eigenvalues(Adiag, M)
-% exact = eigs(Adiag,M, 'smallestabs')
+M = 20;
 
 % utilizzando la matrice piena si fa prima
 % tempi molto strani per alcuni autovalori visti usando tic; toc; nella
