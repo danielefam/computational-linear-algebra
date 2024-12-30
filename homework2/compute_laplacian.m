@@ -33,4 +33,12 @@ KNN = sparse(KNN);
 L_sym = D_inv * L * D_inv;
 L_sym = (L_sym'+L_sym)/2;
 
+% aux = triu(ones(size(L_sym))) .* L_sym;
+% diag_mask = logical(eye(size(aux)));
+% aux(diag_mask) = aux(diag_mask) / 2;
+% L_sym = aux' + aux;
+% issymmetric(L_sym)
+
+
+
 end
