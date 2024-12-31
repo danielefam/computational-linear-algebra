@@ -13,9 +13,11 @@ end
 
 % Plot results
 figure;
+set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 8, 4], 'PaperPositionMode', 'auto', 'PaperSize', [8, 4.5]);
+tiledlayout(1,2,'TileSpacing','Compact','Padding','Compact');
 
 % K-means plot
-subplot(1, 2, 1);
+nexttile;
 c=colormap(turbo(k));
 if size(X, 2) == 3
     for i = 1:k
@@ -31,7 +33,7 @@ title('K-means Clustering');
 hold off;
 
 % DBSCAN plot
-subplot(1, 2, 2);
+nexttile;
 c=colormap(turbo(max(idx_dbscan)));
 if size(X, 2) == 3
     scatter3(X(:,1), X(:,2), X(:,3), 10, idx_dbscan, 'filled');

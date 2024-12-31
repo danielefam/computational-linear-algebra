@@ -43,6 +43,7 @@ ylabel(sprintf('%d-NN Distance', k));
 title('k-NN Distance Graph for DBSCAN');
 legend;
 hold off;
+set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 5.5], 'Position', [0, 0, 6, 5], 'PaperPositionMode', 'auto');
 saveas(gcf, 'figures/knn_distance_graph.pdf');
 
 % Call make_comparison with the datasets
