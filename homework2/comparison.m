@@ -40,13 +40,20 @@ plot(x_spiral, sort(k_distances_spiral), 'DisplayName', 'Spiral');
 plot(x_synthetic, sort(k_distances_synthetic), 'DisplayName', 'Synthetic');
 xlabel('Normalized Points');
 ylabel(sprintf('%d-NN Distance', k));
-title('k-NN Distance Graph for DBSCAN');
+% title('k-NN Distance Graph for DBSCAN');
 legend;
 hold off;
 set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 5.5], 'Position', [0, 0, 6, 5], 'PaperPositionMode', 'auto');
 saveas(gcf, 'figures/knn_distance_graph.pdf');
 
+Xs = {X_circle, X_spiral, X_synthetic};
+params_k = {3, 3, 9};
+params_eps = {0.7, 2, 4.5};
+names = {"circle", "spiral", "synthetic"};
+make_comparison(Xs, "figures/kmeans_comparison_", params_k, params_eps, 5, "kmeans", names);
+make_comparison(Xs, "figures/dbscan_comparison_", params_k, params_eps, 5, "dbscan", names);
+
 % Call make_comparison with the datasets
-make_comparison(X_circle, 'figures/circle_comparison.pdf', 3, 0.7);
-make_comparison(X_spiral, 'figures/spiral_comparison.pdf', 3, 2);
-make_comparison(X_synthetic, 'figures/synthetic_comparison.pdf', 9, 4.5);
+% make_comparison(X_circle, 'figures/circle_comparison.pdf', 3, 0.7);
+% make_comparison(X_spiral, 'figures/spiral_comparison.pdf', 3, 2);
+% make_comparison(X_synthetic, 'figures/synthetic_comparison.pdf', 9, 4.5);
