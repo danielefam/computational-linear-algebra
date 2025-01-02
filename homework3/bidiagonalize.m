@@ -30,5 +30,16 @@ function [P, B, H] = bidiagonalize(A)
         P = Pj * P;
     end
 
+    
+        j = n;
+        Px = householder_mat(B(j:end, j));
+        
+        Pj = eye(m);
+        Pj(j:end, j:end) = Px;
+        
+        B = Pj * B;
+        P = Pj * P;
+    
+
 end
 
