@@ -1,7 +1,7 @@
 function [] = knn_distances(Xs, k, names)
 
 figure;
-set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 5.5], 'Position', [0, 0, 6, 5], 'PaperPositionMode', 'auto');
+set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 5.5], 'Position', [0, 0, 6, 5], 'PaperPositionMode', 'auto');
 hold on;
 for i = 1:size(Xs, 2)
     X = Xs{i};

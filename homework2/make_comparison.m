@@ -8,7 +8,7 @@ for i = 1:size(Xs,2)
     name = names{i};
     
     figure;
-    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4, 4.5]);
+    set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20,  'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4.5, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4.5]);
     % K-means clustering
     [idx, ~] = kmeans(X, k);
     % K-means plot
@@ -22,13 +22,13 @@ for i = 1:size(Xs,2)
     else
         gscatter(X(:,1), X(:,2), idx);
     end
-    legend;
+    legend(Location='northeastoutside');
     % Save the figure as a PDF
     saveas(gcf, output_filename + "kmeans_" + name, 'pdf');
 
 
     figure;
-    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4, 4.5]);
+    set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20,  'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 5, 4], 'PaperPositionMode', 'auto', 'PaperSize', [5, 4.5]);
     % DBSCAN clustering
     [idx, ~] = dbscan(X, epsilon, minPts);
     % DBSCAN plot
@@ -50,7 +50,7 @@ for i = 1:size(Xs,2)
         hold on;
         scatter(X(idx == -1, 1), X(idx == -1, 2), 10, 'k', 'DisplayName', 'Noise');
     end
-    legend;
+    legend(Location='northeastoutside');
     % Save the figure as a PDF
     saveas(gcf, output_filename + "dbscan_" + name, 'pdf');
 end

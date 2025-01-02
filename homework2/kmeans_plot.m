@@ -6,7 +6,7 @@ function [idx] = kmeans_plot(X, L, M, name)
     
     c=colormap(turbo(M));
     figure;
-    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4]);
+    set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20,  'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4.5]);
     
     if size(X, 2) == 3
         for i = 1:M

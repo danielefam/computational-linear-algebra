@@ -10,7 +10,7 @@ X_synthetic = synthetic_dataset(42);
 
 Xs = {X_circle, X_spiral, X_synthetic};
 names = {'circle', 'spiral', 'synthetic'};
-Ms = {[2, 3, 6], [3, 6, 12], [3, 9]};
+Ms = {[2, 3, 6], [3, 6], [3, 9]};
 
 for i = 1:length(Xs)
     X = Xs{i};
@@ -20,8 +20,8 @@ for i = 1:length(Xs)
     for k = [20 40]
         [~, ~, W, ~] = compute_laplacian(X, sigma, k);
         figure;
-        set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4]);
-        spy(W);
+        set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4.5]);
+            spy(W);
         xlabel('j')
         ylabel('i')
         saveas(gcf, ['figures/', name, '_knn_k_', num2str(k), '.pdf']);
