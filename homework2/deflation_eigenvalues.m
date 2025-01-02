@@ -1,5 +1,6 @@
-function [eigvalues] = deflation_eigenvalues(A, iter)
+function [X, D] = deflation_eigenvalues(A, iter)
 % ~
+    X = zeros(size(A, 1), iter);
     [n, ~] = size(A);
 
     if n < iter
@@ -30,5 +31,5 @@ function [eigvalues] = deflation_eigenvalues(A, iter)
         Ak = B1k(2:end, 2:end);
         
     end
-
+    D = diag(eigvalues);
 end

@@ -1,20 +1,23 @@
-function [idx] = kmeans_plot(X, L, M)
+function [idx] = kmeans_plot(X, L, M, name)
     rng(1)
     [U, ~] = eigs(L, M, 'smallestabs');
     
     idx = kmeans(U, M);
-    colors = turbo(M);
-    figure(4);
     
-    for i = 1:M
-        if size(X, 2) == 3
-            scatter3(X(idx==i,1),X(idx==i,2),X(idx==i,3),16,colors(i,:), Marker='o',  MarkerFaceColor=colors(i,:))
-        else
-            scatter(X(idx==i,1),X(idx==i,2),16,colors(i,:), Marker='o', MarkerFaceColor=colors(i,:))
+    c=colormap(turbo(M));
+    figure;
+    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4]);
+    
+    if size(X, 2) == 3
+        for i = 1:M
+            scatter3(X(idx==i,1),X(idx==i,2),X(idx==i,3),10,c(i,:),'filled')
+            hold on;
         end
-        legendInfo{i} = ['Cluster ' num2str(i)];
-        hold on
+    else
+        gscatter(X(:,1), X(:,2), idx);
     end
-    legend(legendInfo);
-    hold off
+
+    legend(arrayfun(@(i) num2str(i), 1:M, 'UniformOutput', false));
+    hold off;
+    saveas(gcf, ['figures/', name, '_c', num2str(M), '.pdf']);
 end

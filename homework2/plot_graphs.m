@@ -1,19 +1,32 @@
-function [] = plot_graphs(X, L, W, eigs_computation)
-    figure(1);
+function [] = plot_graphs(X, L, W, eigs_computation_fns, name, k, fn_names, markers)
+    figure;
+    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4]);
     spy(W);
     xlabel('j')
     ylabel('i')
-    figure(2);
+    saveas(gcf, ['figures/', name, '_knn_k_', num2str(k), '.pdf']);
+    figure;
+    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4]);
     if size(X, 2) == 3
-        scatter3(X(:,1), X(:,2), X(:,3), 16, Marker='o',  MarkerFaceColor='blue');
+        scatter3(X(:,1), X(:,2), X(:,3), 10, 'filled');
     else
-        scatter(X(:,1), X(:,2), 16, Marker='o',  MarkerFaceColor='blue');
-        xlabel('x1')
-        ylabel('x2')  
+        scatter(X(:,1), X(:,2), 10, 'filled');
     end
-    figure(3);
-    [~, D] = eigs_computation(L);
-    plot(abs(diag(D)), Marker='o');
+    saveas(gcf, ['figures/', name, '_dataset.pdf']);
+    figure;
+    set(gcf, 'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 5.5], 'Position', [0, 0, 6, 5], 'PaperPositionMode', 'auto');
+    hold on;
+    for i = 1:length(eigs_computation_fns)
+        eigs_computation = eigs_computation_fns{i};
+        fn_name = fn_names{i};
+        marker = markers{i};
+        [~, D] = eigs_computation(L);
+        D = diag(D);
+        plot(abs(D), Marker=marker, DisplayName=fn_name);
+    end
     xlabel('i')
     ylabel('|\lambda_i|')
+    legend;
+    hold off;
+    saveas(gcf, ['figures/', name, '_eigvals.pdf']);
 end
