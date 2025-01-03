@@ -1,13 +1,6 @@
 function [Q,R] = householder(X)
     [m, n] = size(X);
 
-    % if m ~= n
-    %     disp('MATRIX IS NOT SQUARE!');
-    %     Q = []; 
-    %     R = [];
-    %     return;
-    % end
-
     if m < n
         disp('MATRIX IS NOT GOOD!');
         Q = []; 
@@ -28,7 +21,7 @@ function [Q,R] = householder(X)
         R = P * R;
         Q = P * Q;
     end
-    Q = Q'
+    Q = Q';
 
 end
 

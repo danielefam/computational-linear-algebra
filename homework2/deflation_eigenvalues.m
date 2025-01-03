@@ -13,7 +13,6 @@ function [X, D] = deflation_eigenvalues(A, iter)
     for i = 1:iter   
         j = i - 1;
         nk = n - j;
-
         
         [eigvalues(i), x] = inverse_power_method(Ak);
         
