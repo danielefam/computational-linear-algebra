@@ -1,8 +1,11 @@
 n = 10;
-A = zeros(n, n);
+rng(42);
+A = rand(n, n);
 
 [P, B, H] = bidiagonalize(A);
-[Q, D] = bidiagonal_eigs(B, P, H);
-[U, R, Perm] = qr(A);
-Sigma = R;
-V = Q*Perm;
+[U2, S, V2] = bidiagonal_svd(B);
+U = P'*U2;
+V = H*V2;
+norm(A*V - U*S)
+
+[Utrue, Strue, Vtrue] = svd(A);
