@@ -8,7 +8,13 @@ function [U, S, V] = svd_custom(A, k)
         k = size(A, 2);
     end
 
-    [P, B, H] = bidiagonalize(A);
+    % [P, B, H] = bidiagonalize(A);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%% TO REMOVE!!!!!!!!!!!!!!
+    % built-in function
+    [P, B, H] = bidiag_lapack(A);
+    P = P';
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%
     [U2, S, V2] = bidiagonal_svd(B, k);
     U = P'*U2;
     V = H*V2;
