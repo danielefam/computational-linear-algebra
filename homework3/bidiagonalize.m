@@ -1,12 +1,11 @@
 function [P, B, H] = bidiagonalize(A)
     [m, n] = size(A);
 
+    changed = false;
     if m < n
-        disp('MATRIX IS NOT GOOD!');
-        P = []; 
-        B = []; 
-        H = [];
-        return
+        A = A';
+        [m, n] = size(A);
+        changed = true;
     end  
 
     B = A;
@@ -30,6 +29,12 @@ function [P, B, H] = bidiagonalize(A)
         
     end
     
+    if changed
+        temp = P';
+        P = H';
+        H = temp;
+        B = B';
+    end
 
 end
 
