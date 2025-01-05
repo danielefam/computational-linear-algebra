@@ -15,8 +15,8 @@ end
 mu = p;
 x = x0 / norm(x0);
 
+[L, U, P] = lu(A - p * eye(n));
 for i = 1:maxit
-    [L, U, P] = lu(A - p * eye(n));
     x_new = U \ (L \ (P * x));
     mu = dot(x, x_new);
     x = x_new / norm(x_new);
@@ -24,7 +24,6 @@ for i = 1:maxit
         break;
     end
 end
-disp(i);
 
 lambda = p + 1 / mu;
 
