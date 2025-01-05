@@ -1,11 +1,21 @@
-n = 10;
-rng(42);
-A = rand(n, n);
+close all; clear all; clc;
+img_valentine = imread('data/valentino.jpg');
+img_bricks = imread('data/bricks.jpg');
+img_noise = imread('data/noise.jpg');
 
-[P, B, H] = bidiagonalize(A);
-[U2, S, V2] = bidiagonal_svd(B);
-U = P'*U2;
-V = H*V2;
-norm(A*V - U*S)
+imgs = {img_bricks, img_noise};
+names = {'bricks', 'noise'};
 
-[Utrue, Strue, Vtrue] = svd(A);
+k = 1;
+
+for i = 1:length(imgs)
+    disp(names{i})
+    img = imgs{i};
+    compression(img, k);
+
+    if i ~= length(imgs)
+        disp('Press any key to continue');
+        pause; 
+        close all;
+    end
+end

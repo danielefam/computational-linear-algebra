@@ -11,5 +11,5 @@ function [img] = noise_image_generator(row, col)
     img = randi([0, 255], row, col);
     img = uint8(img);
     imshow(img);
-    imwrite(img, 'data/noise_image.jpg');    
+    imwrite(img, 'data/noise.jpg');    
 end
