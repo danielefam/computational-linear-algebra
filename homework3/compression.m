@@ -5,7 +5,7 @@ function compression(img, ks, name)
     channel_name_colors = {'Red', 'Green', 'Blue'};
     channel_colors = {'r', 'g', 'b'};
     % Read and convert the image to greyscale
-    if ndims(img) == number_of_channel;
+    if ndims(img) == 3
         greyscale_img = rgb2gray(img);
     else
         greyscale_img = img;
