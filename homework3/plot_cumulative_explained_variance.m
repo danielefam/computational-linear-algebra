@@ -7,7 +7,7 @@ function [] = plot_cumulative_explained_variance(singular_values, img_title, col
     end
 
     explained_variance = cumsum(singular_values);
-    explained_variance = explained_variance / explained_variance(end);
+    explained_variance = explained_variance ./ explained_variance(end);
 
     if size(explained_variance,2) == 1
         color_name = colors_names{1};
