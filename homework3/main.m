@@ -3,15 +3,16 @@ img_valentine = imread('data/valentino.jpg');
 img_bricks = imread('data/bricks.jpg');
 img_noise = imread('data/noise.jpg');
 
-imgs = {img_bricks, img_noise};
-names = {'bricks', 'noise'};
+imgs = {img_valentine, img_bricks, img_noise};
+names = {'Valentino Castle', 'Bricks', 'Noise'};
 
-k = 1;
+k = 10;
 
 for i = 1:length(imgs)
-    disp(names{i})
+    name = names{i};
     img = imgs{i};
-    compression(img, k);
+    disp(name)
+    compression(img, k, name);
 
     if i ~= length(imgs)
         disp('Press any key to continue');

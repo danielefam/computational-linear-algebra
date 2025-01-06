@@ -1,11 +1,11 @@
-function [P, B, H] = bidiagonalize(A)
+function [P, B, H] = naive_implementation_bidiagonalize(A)
     [m, n] = size(A);
 
-    changed = false;
+    transposed = false;
     if m < n
         A = A';
         [m, n] = size(A);
-        changed = true;
+        transposed = true;
     end  
 
     P = eye(m);
@@ -29,7 +29,7 @@ function [P, B, H] = bidiagonalize(A)
         
     end
     
-    if changed
+    if transposed
         temp = P';
         P = H';
         H = temp;

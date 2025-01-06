@@ -8,7 +8,7 @@ function [Q,R] = householder(X)
         return
     end  
 
-    % Inizializzazione delle matrici
+    
     R = X;
     Q = eye(m);
 
@@ -17,7 +17,6 @@ function [Q,R] = householder(X)
         P = eye(m);
         P(j:end, j:end) = Pj;
 
-        % Aggiornamento delle matrici
         R = P * R;
         Q = P * Q;
     end
