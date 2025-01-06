@@ -8,22 +8,19 @@ function compression(img, k, name)
     else
         greyscale_img = img;
     end
-    figure;
-    imshow(greyscale_img);
-    title('Original Greyscale Image ', name);
+    
+    show_image(greyscale_img, ['Original Greyscale ', name , ' image']);
 
     % Compress the greyscale image
     [U, S, V] = svd_custom(double(greyscale_img), k);
-    image_title = ['Greyscale ', name, ' image singular values'];
+
     figure;
     plot_singular_values(S)
-    title(image_title)
+    title(['Greyscale ', name, ' image singular values'])
 
     img_compressed = U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
-    figure;
-    imshow(uint8(img_compressed));
-    title(['Compressed Greyscale Image with k = ', num2str(k)]);
+    show_image(uint8(img_compressed), ['Compressed Greyscale ', name, ' image with k = ', num2str(k)])
 
     if ndims(img) == 2
         return
@@ -32,9 +29,8 @@ function compression(img, k, name)
     % Compress the color image
     img_color = img;
     img_compressed_color = zeros(size(img_color));
-    figure;
-    imshow(img_color);
-    title('Original Color Image');
+    
+    show_image(img_color, ['Original ' , name, ' image'])
 
     figure;
     hold on;
@@ -47,16 +43,13 @@ function compression(img, k, name)
         image_title = ['Colorscale ', name, ' image singular values'];
         
         plot_singular_values(S, color_name, color)
-        title(image_title);
-        
+        title(image_title);        
 
         img_compressed_channel = U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
         img_compressed_color(:,:,channel) = img_compressed_channel;
     end
     hold off;
     legend(Location='northeast');
-
-    figure;
-    imshow(uint8(img_compressed_color));
-    title(['Compressed Color Image with k = ', num2str(k)]);
+   
+    show_image(uint8(img_compressed_color), ['Compressed ', name,' image with k = ', num2str(k)]);
 end
