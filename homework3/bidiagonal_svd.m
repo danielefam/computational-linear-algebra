@@ -9,14 +9,14 @@ function [U2, S, V2] = bidiagonal_svd(B_full, k, maxit, tol)
     if nargin < 4
         tol = 1e-12;
     end
-    m = size(B_full, 1);
-    n = size(B_full, 2);
+    
+    [m, n] = size(B_full);
     B = B_full(1:n, 1:n);
     a2 = diag(B).^2;
     b2 = diag(B, 1).^2;
     
-    U2 = zeros(m);
-    V2 = zeros(n);
+    U2 = zeros(m, k);
+    V2 = zeros(n, k);
     
     for i = 1:maxit
         a2(1) = a2(1) + b2(1);

@@ -6,11 +6,13 @@ img_noise = imread('data/noise.jpg');
 imgs = {img_valentine, img_bricks, img_noise};
 names = {'Valentino Castle', 'Bricks', 'Noise'};
 
-k = 10;
+ks = {[5, 10, 15], [2, 10], [3, 10]};
 
 for i = 1:length(imgs)
     name = names{i};
     img = imgs{i};
+    k = ks{i};
+    
     disp(name)
     compression(img, k, name);
 
@@ -20,3 +22,7 @@ for i = 1:length(imgs)
         close all;
     end
 end
+
+disp('Press any key to close all figures');
+pause; 
+close all;
