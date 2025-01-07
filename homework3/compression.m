@@ -35,19 +35,24 @@ function compression(img, ks, name)
     
     show_image(img_color, ['Original ' , name, ' image'])
 
-    for channel = 1:number_of_channel        
+    for channel = 1:number_of_channel 
         img_channel = double(img_color(:,:,channel));
-        [U(:,:,channel), S(:,:,channel), V(:,:,channel)] = svd_custom(img_channel, max_k);
-        singular_values(:, channel) = diag(S(:,:,channel));
+        [U, S, V] = svd_custom(img_channel, max_k);
+        channel_decomposition{channel} = {U, S, V};
+        singular_values(:, channel) = diag(S);
     end
 
     plot_singular_values(singular_values, ['Colorscale ', name, ' image singular values'], channel_name_colors, channel_colors)
     plot_cumulative_explained_variance(singular_values, ['Colorscale ', name, ' image explained variance'], channel_name_colors, channel_colors)
 
     for i = 1:length(ks)
-        k = ks(i);
+        k = ks(i);        
         for channel = 1:number_of_channel
-            img_compressed_channel = U(:,1:k,channel)*S(1:k,1:k)*V(:,1:k,channel)';
+            U = channel_decomposition{channel}{1};
+            S = channel_decomposition{channel}{2};
+            V = channel_decomposition{channel}{3};
+
+            img_compressed_channel = U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
             img_compressed_color(:,:,channel) = img_compressed_channel;
         end
         show_image(uint8(img_compressed_color), ['Compressed ', name,' image with k = ', num2str(k)]);

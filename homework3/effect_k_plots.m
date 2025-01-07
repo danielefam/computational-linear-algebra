@@ -1,4 +1,5 @@
 close all; clear all; clc;
+% 'immse' requires Image Processing Toolbox 
 img_valentine = rgb2gray(imread('data/valentino.jpg'));
 img_bricks = rgb2gray(imread('data/bricks.jpg'));
 img_noise = imread('data/noise.jpg');
@@ -32,6 +33,7 @@ for i = 1:length(imgs)
     for k = 1:k_max
         compression_ratio(k) = (m*n)/(k*(m+n+1));
         img_compressed = U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
+        % 'immse' requires Image Processing Toolbox 
         mse(k, i) = immse(im2double(img), img_compressed);
     end
 end

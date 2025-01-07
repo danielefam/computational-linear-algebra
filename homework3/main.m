@@ -12,7 +12,7 @@ for i = 1:length(imgs)
     name = names{i};
     img = imgs{i};
     k = ks{i};
-    
+
     disp(name)
     compression(img, k, name);
 
