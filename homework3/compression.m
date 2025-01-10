@@ -35,6 +35,8 @@ function compression(img, ks, name)
     
     show_image(img_color, ['Original ' , name, ' image'])
 
+    channel_decomposition = cell(1, number_of_channel);
+    
     for channel = 1:number_of_channel 
         img_channel = double(img_color(:,:,channel));
         [U, S, V] = svd_custom(img_channel, max_k);
