@@ -7,6 +7,7 @@ k_max = min(m, n);
 
 imgs = {img_valentine, img_bricks};
 names = {'Valentino Castle', 'Bricks'};
+names_for_report = {'valentino', 'bricks'};
 decompositions = cell(1, length(imgs));
 
 for i = 1:length(imgs)
@@ -37,8 +38,7 @@ for i = 1:length(imgs)
     V = decompositions{i}{3};
     for k = 2:blocksize
         [compressed_img, compression_ratio_dct(k-1, i), mse_dct(k-1, i)] = dct_compression(im2double(img), blocksize, k);
-        figure;
-        imshow(compressed_img);
+        show_image(compressed_img, ['DCT Compressed ', names{i}, ' k=', num2str(k)], ['/',names_for_report{i}, '/', names_for_report{i}, '_dct_', '_k_', num2str(k)]);
     end
     for j = 2:blocksize
         k = ks_svd(j);

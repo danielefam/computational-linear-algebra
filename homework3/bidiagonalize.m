@@ -63,10 +63,8 @@ function u = householder_vector(x)
         x = x';
     end
 
-    % Calcolo del valore sigma
     sigma = sign(x(1)) * norm(x);
 
-    % Calcolo del versore u
     u = x + sigma * eye(length(x), 1);
     u = u / norm(u);
 end

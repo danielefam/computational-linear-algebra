@@ -9,6 +9,7 @@ k_max = min(m, n);
 
 imgs = {img_valentine, img_bricks, img_noise};
 names = {'Valentino Castle', 'Bricks', 'Noise'};
+names_for_report = {'valentino', 'bricks', 'noise'};
 decompositions = cell(1, length(imgs));
 
 for i = 1:length(imgs)
