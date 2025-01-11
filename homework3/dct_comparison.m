@@ -7,7 +7,7 @@ k_max = min(m, n);
 
 imgs = {img_valentine, img_bricks};
 names = {'Valentino Castle', 'Bricks'};
-names_for_report = {'valentino', 'bricks'};
+report_names = {'valentino', 'bricks'};
 decompositions = cell(1, length(imgs));
 
 for i = 1:length(imgs)
@@ -49,6 +49,7 @@ for i = 1:length(imgs)
 end
 
 figure;
+set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
 plot(compression_ratio_svd, mse_svd, Marker='x');
 svd_legend = arrayfun(@(x) sprintf('SVD %s', names{x}), 1:length(names), 'UniformOutput', false);
 hold on;
@@ -59,3 +60,4 @@ xlabel('Compression Ratio');
 ylabel('Mean Squared Error');
 set(gca, 'YScale', 'log');
 hold off;
+saveas(gcf, ['figures/', 'idk.pdf']);

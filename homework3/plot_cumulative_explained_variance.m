@@ -27,6 +27,7 @@ function [] = plot_cumulative_explained_variance(singular_values, img_title, col
     end
 
     figure;
+    set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
     hold on;
     for j = 1:length(colors)    
         color_name = colors_names{j};

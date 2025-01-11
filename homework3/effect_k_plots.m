@@ -9,7 +9,7 @@ k_max = min(m, n);
 
 imgs = {img_valentine, img_bricks, img_noise};
 names = {'Valentino Castle', 'Bricks', 'Noise'};
-names_for_report = {'valentino', 'bricks', 'noise'};
+report_names = {'valentino', 'bricks', 'noise'};
 decompositions = cell(1, length(imgs));
 
 for i = 1:length(imgs)
@@ -40,11 +40,15 @@ for i = 1:length(imgs)
 end
 
 figure;
+set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
 plot(1:k_max, compression_ratio);
 hold on;
 yline(1, 'r');
 set(gca, 'YScale', 'log');
+saveas(gcf, ['figures/', 'idkplot.pdf']);
 
 figure;
+set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
 plot(1:k_max, mse);
 legend(names);
+saveas(gcf, ['figures/', 'idkplot2.pdf']);
