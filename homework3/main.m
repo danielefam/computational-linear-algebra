@@ -7,7 +7,7 @@ imgs = {img_valentine, img_bricks, img_noise};
 names = {'Valentino Castle', 'Bricks', 'Noise'};
 report_names = {'valentino', 'bricks', 'noise'};
 
-ks = {[5, 10, 15], [2, 10], [3, 10]};
+ks = {[1, 25, 50], [1, 25, 50], [1, 25, 50]};
 
 for i = 1:length(imgs)
     name = names{i};

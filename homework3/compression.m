@@ -18,10 +18,13 @@ function compression(img, ks, name, report_name)
     show_image(greyscale_img, ['Original Greyscale ', name , ' image'], [report_name, '/', report_name, '_greyscale_original']);
 
     % Compress the greyscale image
-    [U, S, V] = svd_custom(double(greyscale_img), max_k);    
+    [U, S, V] = svd_custom(double(greyscale_img), max_k); 
+    s = diag(S);
+    disp(s(1));
+    % disp(s(end-9:end));
     
-    plot_singular_values(diag(S), ['Greyscale ', name, ' image singular values'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_singular_values']);
-    plot_cumulative_explained_variance(diag(S), ['Greyscale ', name, ' image explained variance'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_explained_variance']);
+    plot_singular_values(s, ['Greyscale ', name, ' image singular values'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_singular_values']);
+    plot_cumulative_explained_variance(s, ['Greyscale ', name, ' image explained variance'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_explained_variance']);
 
     for i = 1:length(ks)
         k = ks(i);
