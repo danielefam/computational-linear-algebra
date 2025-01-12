@@ -6,8 +6,7 @@ function [Q,R] = householder(X)
         Q = []; 
         R = [];
         return
-    end  
-
+    end
     
     R = X;
     Q = eye(m);

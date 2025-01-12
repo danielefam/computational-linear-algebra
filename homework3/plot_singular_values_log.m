@@ -1,4 +1,5 @@
-function [] = plot_cumulative_explained_variance(singular_values, img_title, colors_names, colors, img_report_name)
+function [] = plot_singular_values_log(singular_values, img_title, colors_names, colors, img_report_name)
+
     if nargin < 3
         colors_names = {'grey'};
     end
@@ -8,19 +9,16 @@ function [] = plot_cumulative_explained_variance(singular_values, img_title, col
     if nargin < 5
         img_report_name = img_title;
     end
+    
 
-    singular_values = singular_values.^2/(size(singular_values,1)-1);
-    explained_variance = cumsum(singular_values);
-    explained_variance = explained_variance ./ explained_variance(end, :);
-
-    if size(explained_variance,2) == 1
+    if size(singular_values,2) == 1
         color_name = colors_names{1};
         color = colors{1};
         figure;
         set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
-        plot(abs(explained_variance), DisplayName=color_name, LineWidth=1, Color=color);
+        semilogy(abs(singular_values), DisplayName=color_name, LineWidth=1, Color=color);
         xlabel('i');
-        ylabel('cumulative explained variance');        
+        ylabel('|\sigma_i|');        
         grid on;
         saveas(gcf, ['figures/', img_report_name, '.pdf']);
         title(img_title);
@@ -29,18 +27,22 @@ function [] = plot_cumulative_explained_variance(singular_values, img_title, col
 
     figure;
     set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
+    color_name = colors_names{1};
+    color = colors{1};
+    semilogy(abs(singular_values(:,1)), DisplayName=color_name, LineWidth=1, Color=color);
     hold on;
-    for j = 1:length(colors)    
+    for j = 2:length(colors)    
         color_name = colors_names{j};
         color = colors{j};
-        plot(abs(explained_variance(:,j)), DisplayName=color_name, LineWidth=1, Color=color);
-    end     
+        semilogy(abs(singular_values(:,j)), DisplayName=color_name, LineWidth=1, Color=color);
+    end 
     xlabel('i');
-    ylabel('cumulative explained variance');
+    ylabel('|\sigma_i|');
     grid on;   
     hold off;
     legend(Location='northeast');
     saveas(gcf, ['figures/', img_report_name, '.pdf']);
-    title(img_title); 
+    title(img_title);
+
 end
 

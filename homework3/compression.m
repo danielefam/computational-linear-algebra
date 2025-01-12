@@ -4,10 +4,12 @@ function compression(img, ks, name, report_name)
         report_name = name;
     end
 
+    % Constants
     max_k = max(ks);
     number_of_channel = 3;
     channel_name_colors = {'Red', 'Green', 'Blue'};
     channel_colors = {'r', 'g', 'b'};
+
     % Read and convert the image to greyscale
     if ndims(img) == 3
         greyscale_img = rgb2gray(img);
@@ -15,16 +17,19 @@ function compression(img, ks, name, report_name)
         greyscale_img = img;
     end
     
+    % Show the original greyscale image
     show_image(greyscale_img, ['Original Greyscale ', name , ' image'], [report_name, '/', report_name, '_greyscale_original']);
 
     % Compress the greyscale image
+    % Compute the SVD of the greyscale image
     [U, S, V] = svd_custom(double(greyscale_img), max_k); 
     s = diag(S);
-    disp(s(1));
-    % disp(s(end-9:end));
     
+    % Plot the singular values and the cumulative explained variance
     plot_singular_values(s, ['Greyscale ', name, ' image singular values'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_singular_values']);
+    plot_singular_values_log(s, ['Greyscale ', name, ' image singular values (log scale)'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_singular_values_log']);
     plot_cumulative_explained_variance(s, ['Greyscale ', name, ' image explained variance'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_explained_variance']);
+    plot_cumulative_singular_values(s, ['Greyscale ', name, ' image cumulative singular values'], {'grey'}, {'b'}, [report_name, '/', report_name, '_greyscale_cum_singular_values']);
 
     for i = 1:length(ks)
         k = ks(i);
@@ -40,8 +45,10 @@ function compression(img, ks, name, report_name)
     img_color = img;
     img_compressed_color = zeros(size(img_color));
     
+    % Show the original color image
     show_image(img_color, ['Original ', name, ' image'], [report_name, '/', report_name, '_color_original']);
 
+    % Compute the SVD of each channel
     channel_decomposition = cell(1, number_of_channel);
     
     for channel = 1:number_of_channel 
@@ -52,8 +59,11 @@ function compression(img, ks, name, report_name)
     end
 
     plot_singular_values(singular_values, ['Colorscale ', name, ' image singular values'], channel_name_colors, channel_colors, [report_name, '/', report_name, '_color_singular_values']);
+    plot_singular_values_log(singular_values, ['Colorscale ', name, ' image singular values (log scale)'], channel_name_colors, channel_colors, [report_name, '/', report_name, '_color_singular_values_log']);
     plot_cumulative_explained_variance(singular_values, ['Colorscale ', name, ' image explained variance'], channel_name_colors, channel_colors, [report_name, '/', report_name, '_color_explained_variance']);
-
+    plot_cumulative_singular_values(singular_values, ['Colorscale ', name, ' image cumulative singular values'], channel_name_colors, channel_colors, [report_name, '/', report_name, '_color_cum_singular_values']);
+    
+    % Compress the color image
     for i = 1:length(ks)
         k = ks(i);        
         for channel = 1:number_of_channel
