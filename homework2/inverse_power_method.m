@@ -12,9 +12,11 @@ function [mu, v] = inverse_power_method(A, maxIter, relTol)
     v_k = v_in / norm(v_in);
     mu_k = 10; 
     % A = full(A);
+    [L, U] = lu(A);
 
     for k = 1:maxIter
-        v_til_k1 = A \ v_k;        
+        v_til_k1 = U \ (L \ v_k);
+        % v_til_k1 = A \ v_k;        
         
         mu_k1 = v_k' * v_til_k1;
 
@@ -32,5 +34,3 @@ function [mu, v] = inverse_power_method(A, maxIter, relTol)
     mu = 1 / mu_k;
     v = v_k/norm(v_k);
 end
-
-
