@@ -44,11 +44,17 @@ set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inch
 plot(1:k_max, compression_ratio);
 hold on;
 yline(1, 'r');
+xlabel('k');
+ylabel('Compression Ratio');
+xlim([1 k_max]);
 set(gca, 'YScale', 'log');
-saveas(gcf, ['figures/', 'idkplot.pdf']);
+saveas(gcf, ['figures/', 'compression_ratio.pdf']);
 
 figure;
 set(gcf, 'DefaultAxesFontSize', 15, 'DefaultLegendFontSize', 12,  'Units', 'inches', 'PaperUnits', 'inches', 'PaperSize', [6, 4.5], 'Position', [0, 0, 6, 4], 'PaperPositionMode', 'auto');
 plot(1:k_max, mse);
 legend(names);
-saveas(gcf, ['figures/', 'idkplot2.pdf']);
+xlabel('k');
+ylabel('MSE');
+xlim([1 k_max]);
+saveas(gcf, ['figures/', 'mse_comparison.pdf']);

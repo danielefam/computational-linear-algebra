@@ -11,7 +11,9 @@ function [U2, S, V2] = bidiagonal_svd(B_full, k, maxit, tol)
     end
     
     [m, n] = size(B_full);
+    % Crop B to the bidiagonal part
     B = B_full(1:n, 1:n);
+    % Squared bidiagonal elements
     a2 = diag(B).^2;
     b2 = diag(B, 1).^2;
     
@@ -27,16 +29,21 @@ function [U2, S, V2] = bidiagonal_svd(B_full, k, maxit, tol)
         end
         a2(n) = a2(n) - b2(n-1);
         sd = a2(1:n-1).*b2;
+        % Check for convergence
         if all(abs(sd) < tol)
             break;
         end
     end
     
+    % Compute the singular values matrix
     S = diag(sqrt(a2));
+
     T = B'*B;
     eigs = zeros(n, 1);
     for i = 1:k
+        % Use shifted inverse power method to find the eigenvectors of T
         [eigs(i), V2(:,i)] = shifted_inverse_power_method(T, a2(i));
+        % Compute the corresponding left singular vectors
         U2(:,i) = B_full*V2(:,i) / S(i,i);
     end
 
