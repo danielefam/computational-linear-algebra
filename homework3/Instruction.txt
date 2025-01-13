@@ -1,0 +1,10 @@
+To execute the main script, run `main.m` in MATLAB.
+In a for loop, the points of the homework will be executed and images will be generated.
+Make sure to have a directory called 'figures'.
+
+To obtain the results on how compression ratio and MSE vary as $k$ varies in truncated SVD, run `effect_k_plots.m`.
+The `immse` function from the Image Processing Toolbox is necessary to run this script and the following one.
+The images will also be saved in the 'figures' folder.
+
+To obtain the results for comparison with DCT, run the file `dct_comparison.m`.
+The images will also be saved in the 'figures' folder.
