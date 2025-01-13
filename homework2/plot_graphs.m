@@ -1,4 +1,5 @@
 function [] = plot_graphs(X, L, W, eigs_computation_fns, name, k, fn_names, markers)
+    % Function that plots the graphs of the Laplacian matrix and the eigenvalues
     figure;
     set(gcf, 'DefaultAxesFontSize', 20, 'DefaultLegendFontSize', 20,  'Units', 'inches', 'PaperUnits', 'inches', 'Position', [0, 0, 4, 4], 'PaperPositionMode', 'auto', 'PaperSize', [4.5, 4.5]);
     spy(W);

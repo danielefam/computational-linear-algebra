@@ -1,4 +1,6 @@
 function make_comparison(Xs, output_filename, params_k, params_eps, names)
+% Function that compares the clustering results for the datasets
+% for different algorithms, different datasets
 minPts = 5;
 for i = 1:size(Xs,2)
     % Get current dataset, dataset name, parameters for kmeans and DBSCAN

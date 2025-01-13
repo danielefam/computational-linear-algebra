@@ -13,6 +13,7 @@ for i = 1:n
     end
 end
 
+% Compute the k-NN graph matrix
 [~, I] = maxk(W, k);
 KNN = zeros(n, n);
 for j = 1:n
@@ -25,11 +26,12 @@ D = sum(KNN, 2);
 L = diag(D) - KNN;
 
 D_inv = spdiags((sqrt(D)).^(-1), 0, n, n);
+% Convert to sparse matrices
 D = spdiags(D, 0, n, n);
 L = sparse(L);
 KNN = sparse(KNN);
 
-% TODO: Check why L_sym is not symmetric
+% Compute the normalized symmetric Laplacian matrix
 L_sym = D_inv * L * D_inv;
 L_sym = (L_sym'+L_sym)/2;
 

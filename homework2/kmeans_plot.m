@@ -1,7 +1,9 @@
 function [idx] = kmeans_plot(X, L, M, name)
+    % Function that plots the result of k-means after having applied spectral clustering
     rng(1)
+    % Compute the first M eigenvectors of the Laplacian matrix
     [U, ~] = eigs(L, M, 'smallestabs');
-    
+    % Apply k-means to the eigenvectors
     idx = kmeans(U, M);
     
     c=colormap(turbo(M));
