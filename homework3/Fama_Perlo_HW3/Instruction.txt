@@ -1,6 +1,6 @@
 To execute the main script, run `main.m` in MATLAB.
 In a for loop, the points of the homework will be executed and images will be generated.
-Make sure to have a directory called 'figures'.
+Make sure to have a directory called 'figures' with three subdirectories: 'bricks', 'valentino' and 'noise'.
 
 To obtain the results on how compression ratio and MSE vary as $k$ varies in truncated SVD, run `effect_k_plots.m`.
 The `immse` function from the Image Processing Toolbox is necessary to run this script and the following one.

@@ -2,6 +2,5 @@ To execute the main script, run `main.m` in MATLAB.
 
 In a for loop, the points of the homework will be executed and images will be generated.
 Make sure to have a directory called 'figures'.
-Due to the creation and saving of figures, and the high computational cost of the inverse power method, it may take a while.
 
 To obtain the results for point 9, run the file `comparison.m`. The images will also be saved in the 'figures' folder.
