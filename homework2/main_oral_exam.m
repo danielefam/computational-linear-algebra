@@ -31,6 +31,6 @@ for i = 1:length(Xs)
     disp([name ' - # Connected components (rank): ', num2str(conncomp_rank)]);
 
     for m = Ms{i}
-        idx = kmeans_plot(X, L, m, name);
+        idx = kmeans_plot_oral_exam(X, L, m, name);
     end
 end
