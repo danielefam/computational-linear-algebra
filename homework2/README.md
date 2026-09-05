@@ -45,4 +45,11 @@ The script processes the datasets in `datasets/` and writes plots to `figures/`.
 - Statistics and Machine Learning Toolbox for `kmeans`
 - A recent MATLAB release with graph functions such as `graph` and `conncomp`
 
-The `Fama_Perlo_HW2/` folder retains a submission-ready copy of the project.
+## Authors
+
+- **Daniele Famà**
+- **Alessandro Perlo**
+
+Politecnico di Torino — *Computational Linear Algebra* (A.Y. 2024/2025)
+
+The `Fama_Perlo_HW2/` folder retains a submission-ready copy of the project prepared by Daniele Famà and Alessandro Perlo.

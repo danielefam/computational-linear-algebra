@@ -16,7 +16,7 @@ This repository gathers three hands-on assignments that turn core linear-algebra
 
 | Assignment | Focus | Highlights |
 | --- | --- | --- |
-| `homework1` | Principal Component Analysis | PCA applied to the Fama-French / Perold dataset, with data and an accompanying notebook. |
+| `homework1` | Principal Component Analysis | PCA applied to survey response data (`responses_hw.csv`), feature selection, dimensionality reduction, and clustering with an accompanying notebook. |
 | `homework2` | Spectral clustering | k-NN graphs, graph Laplacians, eigensolvers, and clustering experiments on circle and spiral datasets. |
 | `homework3` | SVD and compression | Householder bidiagonalization, custom SVD routines, truncated-SVD image compression, noise analysis, and a DCT comparison. |
 
@@ -76,6 +76,13 @@ Outputs are saved under `figures/`; image-based experiments use the files in `da
 - Householder transformations and bidiagonalization
 - Truncated singular-value decomposition for image compression
 - Discrete Cosine Transform (DCT) baselines
+
+## Authors
+
+- **Daniele Famà**
+- **Alessandro Perlo**
+
+Politecnico di Torino — *Computational Linear Algebra* (A.Y. 2024/2025)
 
 ## Notes
 

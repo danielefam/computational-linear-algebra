@@ -1,6 +1,17 @@
 # Homework 1: Principal Component Analysis
 
-Exploration of Principal Component Analysis (PCA) using the Fama-French / Perold dataset.
+Exploration of Principal Component Analysis (PCA) applied to survey response data (`responses_hw.csv`), focusing on data preprocessing, feature selection, dimensionality reduction, and clustering.
+
+## Authors
+
+- **Daniele Famà**
+- **Alessandro Perlo**
+
+Politecnico di Torino — *Computational Linear Algebra* (A.Y. 2024/2025)
+
+## Dataset
+
+The analysis is conducted on survey response data (`responses_hw.csv`) accompanied by column descriptions (`columns_hw.csv`). The dataset covers diverse categories including personality traits, interests, music preferences, health habits, and financial spending. A reproducible subset of features and observations is sampled based on student IDs for subsequent analysis.
 
 ## Contents
 
@@ -23,8 +34,8 @@ jupyter notebook HWpca_Fama_Perlo.ipynb
 
 ## Requirements
 
-A Python environment with Jupyter and the packages imported by the notebook. Install any missing dependency in the selected notebook kernel before running the analysis.
+A Python environment with Jupyter and the packages imported by the notebook (`numpy`, `pandas`, `scipy`, `scikit-learn`, `matplotlib`). Install any missing dependencies in the selected notebook kernel before running the analysis.
 
 ## Goal
 
-The notebook studies the data through principal components, examining dimensionality reduction and the variance captured by the resulting components.
+The notebook studies the data through principal components, examining dimensionality reduction, explained variance, feature loadings, and clustering in the reduced subspace.

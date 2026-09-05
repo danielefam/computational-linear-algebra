@@ -46,4 +46,11 @@ The main script loads the images in `data/`, creates compression results for sev
 - MATLAB
 - Image Processing Toolbox for `immse`, used by the error-analysis scripts
 
-The `Fama_Perlo_HW3/` directory contains a submission-ready copy of this assignment.
+## Authors
+
+- **Daniele Famà**
+- **Alessandro Perlo**
+
+Politecnico di Torino — *Computational Linear Algebra* (A.Y. 2024/2025)
+
+The `Fama_Perlo_HW3/` directory contains a submission-ready copy of this assignment prepared by Daniele Famà and Alessandro Perlo.
